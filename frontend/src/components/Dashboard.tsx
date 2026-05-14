@@ -37,10 +37,10 @@ export function Dashboard() {
     setLatestReport(null);
     const [r, s] = await Promise.all([
       rulesApi.list(d.id),
-      schedApi.list(d.id),
+      schedApi.list(),
     ]);
     setRuleList(r);
-    setScheduleList(s);
+    setScheduleList(s.filter((sc) => sc.dataset_id === d.id));
     setTab("rules");
   };
 

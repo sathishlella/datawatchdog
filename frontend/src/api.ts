@@ -31,14 +31,11 @@ export const reports = {
 
 export const alerts = {
   list: (): Promise<AlertRecord[]> =>
-    api.get("/api/alerts/").then(r => r.data),
+    api.get("/api/datasets/alerts").then(r => r.data),
 };
 
 export const schedules = {
-  list: (datasetId?: number): Promise<Schedule[]> =>
-    datasetId
-      ? api.get(`/api/datasets/${datasetId}/schedules`).then(r => r.data)
-      : api.get("/api/schedules/").then(r => r.data),
+  list: (): Promise<Schedule[]> => api.get("/api/schedules/").then(r => r.data),
   create: (body: Omit<Schedule, "id" | "is_active">) =>
     api.post("/api/schedules/", body).then(r => r.data as Schedule),
   delete: (id: number) => api.delete(`/api/schedules/${id}`),
