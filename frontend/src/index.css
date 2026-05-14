@@ -1,0 +1,3 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #080308; color: #e0d0e8; }
+input, select { outline: none; }
